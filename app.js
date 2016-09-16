@@ -61,15 +61,5 @@ app.use(function (err, req, res, next) {
     });
 });
 
-/*mongodb.MongoClient.connect(
-    process.env.MONGO_URL, function (err, database) {
-        if (err) {
-            console.log(err);
-            process.exit(1);
-        }
-        app.locals.DB = database;
-        console.log("I\'m up!");
-    });*/
-
 module.exports = app;
 

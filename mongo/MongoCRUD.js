@@ -36,13 +36,11 @@ MongoCRUD.prototype.insertOne = function (doc, callback) {
                 console.log(res, err.message, "Failed to create new contact.");
             } else {
                 callback;
-
             }
         })
-
 };
 
-MongoCRUD.prototype.findOne = function (query) {
+MongoCRUD.prototype.findOne = function (query, callback) {
     this.db.collection(this.collection)
         .findOne(query, function (err, doc) {
 
@@ -51,26 +49,26 @@ MongoCRUD.prototype.findOne = function (query) {
                 console.log(res, err.message, "Failed to create new contact.")
             } else {
                 //res.status(200)
-                return JSON.parse(doc.ops[0]);
+                callback;
             }
         })
 };
 
-MongoCRUD.prototype.updateOne = function (req, res, updateDoc) {
+MongoCRUD.prototype.updateOne = function (updateDoc , callback) {
     this.db.collection(this.collection)
-        .updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function (err, doc) {
+        .updateOne(updateDoc, function (err) {
 
             if (err) {
                 //TODO error handle
                 console.log(res, err.message, "Failed to update contact.")
             } else {
                 //res.status(204)
-                return true;
+                callback;
             }
         })
 };
 
-MongoCRUD.prototype.deleteOne = function (query) {
+MongoCRUD.prototype.deleteOne = function (query , callback) {
     this.db.collection(this.collection)
         .deleteOne(query, function (err) {
 
@@ -79,7 +77,7 @@ MongoCRUD.prototype.deleteOne = function (query) {
                 console.log(err.message, "Failed to delete new contact.")
             } else {
                 //res.status(204)
-                return true;
+                callback;
             }
         })
 };
