@@ -1,3 +1,11 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-<p>{{docs}}</p>
+<ul>
+    {{#each docs}}
+        <li>
+            {{this.firstName}}
+            {{this.email}}
+            <hr/>
+        </li>
+    {{/each}}
+</ul>
