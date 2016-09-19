@@ -1,17 +1,13 @@
+"use strict";
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var mongodb = require('mongodb');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-/*var ObjectID = mongodb.ObjectID;
- exports.ObjectID = ObjectID;*/
-
 
 var app = express();
 
