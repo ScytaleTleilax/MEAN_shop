@@ -1,11 +1,18 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-<ul>
+<table>
+    <th>
+        <tr>
+            <td>firstName</td>
+            <td>lastName</td>
+            <td>email</td>
+        </tr>
+    </th>
     {{#each docs}}
-        <li>
-            {{this.firstName}}
-            {{this.email}}
-            <hr/>
-        </li>
+        <tr>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.email}}</td>
+        </tr>
     {{/each}}
-</ul>
+</table>

@@ -23,16 +23,16 @@ function MongoCRUD( collection ) {
 
 MongoCRUD.prototype.getAll = function ( callback ) {
 
-    var self = this;
-    self.db.collection( self.collection )
+    this.db.collection( this.collection )
         .find( {} )
         .toArray()
         .then( callback );
 };
 
 MongoCRUD.prototype.insertOne = function ( doc , callback ) {
+    
     this.db.collection( this.collection )
-        .insertOne( doc , function ( err , doc ) {
+        .insertOne( doc , function ( err ) {
 
             if ( err ) {
                 //TODO error handle
@@ -44,6 +44,7 @@ MongoCRUD.prototype.insertOne = function ( doc , callback ) {
 };
 
 MongoCRUD.prototype.findOne = function ( query , callback ) {
+
     this.db.collection( this.collection )
         .findOne( query , function ( err , doc ) {
 
@@ -58,6 +59,7 @@ MongoCRUD.prototype.findOne = function ( query , callback ) {
 };
 
 MongoCRUD.prototype.updateOne = function ( updateDoc , callback ) {
+
     this.db.collection( this.collection )
         .updateOne( updateDoc , function ( err ) {
 
@@ -72,6 +74,7 @@ MongoCRUD.prototype.updateOne = function ( updateDoc , callback ) {
 };
 
 MongoCRUD.prototype.deleteOne = function ( query , callback ) {
+
     this.db.collection( this.collection )
         .deleteOne( query , function ( err ) {
 
