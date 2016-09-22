@@ -1,9 +1,9 @@
-var mongodb = require( 'mongodb' );
+let mongodb = require( 'mongodb' );
 
 
 function MongoCRUD( collection ) {
     "use strict";
-    var self = this;
+    let self = this;
 
     //TODO Getters and Setters
     self.collection = collection;
@@ -20,12 +20,11 @@ function MongoCRUD( collection ) {
                     self.db = database;
                 }
             } );
-
-    })()
+    })();
 }
 
 MongoCRUD.prototype.getAll = function ( callback ) {
-    var self = this;
+    let self = this;
 
     self.db.collection( self.collection )
         .find( {} )
@@ -43,7 +42,7 @@ MongoCRUD.prototype.insertOne = function ( doc , callback ) {
                 //TODO error handle
                 console.log( res , err.message , "Failed to create new contact." );
             } else {
-                callback;
+                callback();
             }
         } )
 };
@@ -58,7 +57,7 @@ MongoCRUD.prototype.findOne = function ( query , callback ) {
                 console.log( res , err.message , "Failed to create new contact." )
             } else {
                 //res.status(200)
-                callback;
+                callback();
             }
         } )
 };
@@ -73,7 +72,7 @@ MongoCRUD.prototype.updateOne = function ( updateDoc , callback ) {
                 console.log( res , err.message , "Failed to update contact." )
             } else {
                 //res.status(204)
-                callback;
+                callback();
             }
         } )
 };
@@ -88,7 +87,7 @@ MongoCRUD.prototype.deleteOne = function ( query , callback ) {
                 console.log( err.message , "Failed to delete new contact." )
             } else {
                 //res.status(204)
-                callback;
+                callback();
             }
         } )
 };

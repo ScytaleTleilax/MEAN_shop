@@ -1,20 +1,20 @@
 "use strict";
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var mongodb = require('mongodb');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let bodyParser = require('body-parser');
+let cookieParser = require('cookie-parser');
+let mongodb = require('mongodb');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+let routes = require('./routes/index');
+let users = require('./routes/users');
 
-/*var ObjectID = mongodb.ObjectID;
+/*let ObjectID = mongodb.ObjectID;
  exports.ObjectID = ObjectID;*/
 
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +33,7 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
