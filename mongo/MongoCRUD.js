@@ -1,36 +1,41 @@
-"use strict";
 var mongodb = require( 'mongodb' );
 
-var DB;
-mongodb.MongoClient.connect(
-    "mongodb://127.0.0.1:27017" , function ( err , database ) {
-        if ( err ) {
-            console.log( err );
-            process.exit( 1 );
-        }
-        DB = database;
-        console.log( "I\'m up!" );
-    } );
 
 function MongoCRUD( collection ) {
+    "use strict";
+    var self = this;
 
     //TODO Getters and Setters
+    self.collection = collection;
 
+    (function () {
+        mongodb.MongoClient.connect(
+            "mongodb://127.0.0.1:27017/admin" , function ( err , database ) {
+                if ( err ) {
+                    console.log( err );
+                    process.exit( 1 );
+                }
+                else {
+                    console.log( "I\'m up!" );
+                    self.db = database;
+                }
+            } );
 
-    this.collection = collection;
-    this.db = DB;
+    })()
 }
 
 MongoCRUD.prototype.getAll = function ( callback ) {
+    var self = this;
 
-    this.db.collection( this.collection )
+    self.db.collection( self.collection )
         .find( {} )
         .toArray()
         .then( callback );
+
 };
 
 MongoCRUD.prototype.insertOne = function ( doc , callback ) {
-    
+
     this.db.collection( this.collection )
         .insertOne( doc , function ( err ) {
 
